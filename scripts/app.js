@@ -23,6 +23,19 @@ const updateUI = (data) => {
             <span>&deg;C</span>
         </div>
     </div>`;
+        
+    if(card.classList.contains('d-none')){
+        card.classList.remove('d-none');
+    }
+
+    if(weatherInfo.dt >= weatherInfo.sys.sunrise && weatherInfo.dt < weatherInfo.sys.sunset){
+        time.setAttribute('src','img/day.svg');
+    }
+    else{
+        time.setAttribute('src','img/night.svg');
+    }
+    // console.log(weatherInfo.weather[0].icon);
+    icon.setAttribute('src',`img/icons/${weatherInfo.weather[0].icon}.svg`);
 };
 
 form.addEventListener('submit', e => {
