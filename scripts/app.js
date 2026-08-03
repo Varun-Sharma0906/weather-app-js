@@ -44,9 +44,20 @@ form.addEventListener('submit', e => {
     const city = form.city.value.trim();
     form.reset();
 
+    localStorage.setItem('city', city);
+    
     getInfo(city).then(data => {
         updateUI(data);
     }).catch(err => {
         console.log(err);
     });
-}); 
+});
+
+if(localStorage.getItem('city')){
+    getInfo(localStorage.getItem('city'))
+    .then(data => {
+        updateUI(data);
+    }).catch(err => {
+        console.log(err);
+    });
+}
